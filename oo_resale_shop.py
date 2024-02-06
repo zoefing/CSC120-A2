@@ -1,13 +1,15 @@
+from computer import Computer
+
 class ResaleShop:
 
     # attributes
     
-    inventory: dict
+    inventory: []
 
     # constructors
 
     def __init__(self, inventory):
-        self.inventory = inventory
+        self.inventory = []
 
     # methods
     
@@ -22,29 +24,41 @@ class ResaleShop:
         # add computer to inventory dictionary
         self.inventory.append(new_computer)
     
-    def sell_computer(self, computer):
+    def sell_computer(self, itemID):
         """ removes a computer from the shop inventory
 
         args:
-            computer (str): computer being sold
+            itemID (int): computer being sold
         """
         # if computer in inventory, remove computer from inventory
-        if computer in self.inventory:
-            self.inventory.remove(computer)
+        if itemID in self.inventory:
+            self.inventory.remove(itemID)
         # error message
         else:
-            print("Computer not in inventory")
-    
+            print(f"{itemID} not in inventory.") 
+            
     def update_computer_price(self, computer, new_price):
-        """ updates a computer's price in the shop inventory
+        """_summary_
 
-        Args:
-            computer (_type_): _description_
-            new_price (_type_): _description_
+        args:
+            computer (str): computer with price being updated
+            new_price (str): new price of computer
         """
-        # if computer in inventory, update computer price
         if computer in self.inventory:
-            self.inventory["price"] = new_price
+            computer.price = new_price
+            print("Price updated successfully.")
+        else:
+            print(f"{computer} not found in inventory.")   
+                
+    def check_inventory(self):
+        """ checks and prints the inventory of the shop
+        """
+    # check that the inventory is not empty
+        if self.inventory.__len__() != 0:
+            i = 0
+            computer:Computer
+            for computer in self.inventory:
+                print(f"Item ID: {i+1} : 'description: {computer.description}, 'processor_type': {computer.processor_type}, 'hard_drive_capacity': {computer.hard_drive_capacity}, 'memory': {computer.memory}, 'operating_system': {computer.operating_system}, 'year_made': {computer.year_made}, 'price': {computer.price}")
         # error message
         else:
-            print("Computer not in inventory")
+            print("No inventory to display.")
