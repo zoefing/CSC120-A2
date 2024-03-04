@@ -4,27 +4,27 @@ class ResaleShop:
 
     # attributes
     
-    inventory: []
+    inventory: list
 
     # constructors
 
-    def __init__(self, inventory):
+    def __init__(self):
         self.inventory = []
 
     # methods
     
     # not given a limited amount of funds, so no subtraction of shop money
-    def buy_computer(self, new_computer):
+    def buy(self, itemID):
         """ adds a new computer to the shop inventory
 
         args:
-            new_computer (str): computer being bought
+            itemID (int): computer being bought
        
         """
         # add computer to inventory dictionary
-        self.inventory.append(new_computer)
+        self.inventory.append(itemID)
     
-    def sell_computer(self, itemID):
+    def sell(self, itemID):
         """ removes a computer from the shop inventory
 
         args:
